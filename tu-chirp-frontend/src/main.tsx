@@ -1,45 +1,36 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Edit from './routes/edit.tsx'
-import FindUsers from './routes/find_users.tsx'
-import Login from './routes/login.tsx'
-import PostDetails from './routes/post_details.tsx'
-import Profile from './routes/profile.tsx'
-import Root from './routes/root.tsx';
+// main.tsx or index.tsx
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { initializeApp } from 'firebase/app'; // Import initializeApp
+import { getAnalytics } from 'firebase/analytics'; // Import getAnalytics
+import App from './App';
+import Login from './routes/login'; // Adjust the import path
 
 
-const router = createBrowserRouter([{
-  path: "/",
-  element: <Root />,
-  children: [
-    {
-      path: "profile",
-      element: <Profile />
-    },
-    {
-      path: "details",
-      element: <PostDetails />
-    },
-    {
-      path: "edit",
-      element: <Edit />
-    },
-    {
-      path: "findusers",
-      element: <FindUsers />
-    },
-    {
-      path:"login",
-      element: <Login />
-    }
-  ]
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyClGcAmx2M6hc1mJa5luYiGJgjJLMnKvkU",
+  authDomain: "tu-chirp.firebaseapp.com",
+  projectId: "tu-chirp",
+  storageBucket: "tu-chirp.appspot.com",
+  messagingSenderId: "689381813853",
+  appId: "1:689381813853:web:9ec3573abcc4b05c7967b4",
+  measurementId: "YOUR_MEASUREMENT_ID" // Optional if you're using Firebase Analytics
+};
 
-}])
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Router>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/login" element={<Login />} /> {/* Route for the Login component */}
+      </Routes>
+    </Router>
   </React.StrictMode>,
-)
+  document.getElementById('root')
+);
