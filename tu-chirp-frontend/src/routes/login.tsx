@@ -8,7 +8,7 @@ export default function Login(){
 
     return(
         <>
-            {/* This will return your xml. */}
+            {/* This will return your jsx. */}
         </>
     );
 }

@@ -5,7 +5,7 @@ export default function Profile(){
 
     return(
         <>
-            {/* This will return your xml. */}
+            {/* This will return your jsx. */}
         </>
     );
 }
