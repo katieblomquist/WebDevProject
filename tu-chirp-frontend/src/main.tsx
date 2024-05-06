@@ -6,9 +6,12 @@ import Edit from './routes/edit.tsx'
 import FindUsers from './routes/find_users.tsx'
 import Login from './routes/login.tsx'
 import PostDetails from './routes/post_details.tsx'
-import Profile from './routes/profile.tsx'
 import Root from './routes/root.tsx';
+import Feed from './routes/feed.tsx';
+import { profile } from './services/mock_data.ts';
+import ProfilePage from './routes/profile.tsx';
 
+let user = profile;
 
 const router = createBrowserRouter([{
   path: "/",
@@ -16,7 +19,7 @@ const router = createBrowserRouter([{
   children: [
     {
       path: "profile",
-      element: <Profile />
+      element: <ProfilePage user={user} />
     },
     {
       path: "details",
@@ -33,6 +36,10 @@ const router = createBrowserRouter([{
     {
       path:"login",
       element: <Login />
+    },
+    {
+      path:"feed",
+      element: <Feed user={user}/>
     }
   ]
 
@@ -43,3 +50,5 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <RouterProvider router={router} />
   </React.StrictMode>,
 )
+
+

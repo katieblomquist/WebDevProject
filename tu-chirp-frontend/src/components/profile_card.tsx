@@ -3,35 +3,34 @@ import { Outlet, Link } from "react-router-dom";
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Profile } from '../services/entities';
-import { UserService } from '../services/user.service';
-import { MockUserService } from '../services/mock_user.service';
-
-const userService: UserService = new MockUserService;
 
 export default function ProfileCard(props: {location: string, user: Profile}){
 
     // implement hooks
 
     //implement functions
+    let initial = props.user.handle.charAt(1).toUpperCase();
     function buttonType(location: string, user: Profile){
         if (location === "profile"){
             return <Button 
             variant="outlined" 
+            color="error"
             onClick={() => {
-                userService.deleteUser(user);
+                //TO DO: create it so it deletes through parent
               }}>Delete Profile</Button>
         } else if( location === "main"){
             return <Button
             variant="contained"
-            ><Link to={`profile`}>Your Profile</Link></Button>
+            style={{backgroundColor:'#F5BE41'}}
+            ><Link to={"/profile"} style={{color:'black'}}>Your Profile</Link></Button>
         }
     }
     
 
     return(
 
-            <Card variant="outlined">
-                <Avatar>H</Avatar>
+            <Card variant="outlined" style={{display:'flex', flexDirection:'column', height:'200px', justifyContent:'space-between', alignItems: 'center', padding: '20px', margin: '0 20px'}}>
+                <Avatar>{initial}</Avatar>
                 <p>{props.user.handle}</p>
                 <p>{props.user.email}</p>
                 <div>

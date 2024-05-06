@@ -1,12 +1,22 @@
-export default function Root(){
+import { Outlet, Link } from "react-router-dom";
+import React from "react";
 
-    // implement hooks
-
-    //implement functions
-
-    return(
+export default function Root() {
+    return (
         <>
-            {/* This will return your jsx. */}
+            {/* <div id="navbar">
+               <nav>
+                    <ul>
+                        
+                    </ul>
+                </nav>
+            </div> */}
+
+            <div id="routes">
+                <Outlet />
+            </div>
+
+
         </>
-    );    
+    );
 }
