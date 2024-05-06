@@ -1,4 +1,4 @@
-import { User, UserList } from "./entities";
+import { Follow, Profile, User, UserList } from "./entities";
 
 //This is an interface that will be implimented first in the mock services (which connect to mock data) and then to the http services (which connect
 // to the API). This will allow us to start dev on front oned without the API being finished and without having to duplicate work. 
@@ -8,24 +8,21 @@ import { User, UserList } from "./entities";
 export interface UserService{
 
     //Delete user account call
-    //will need to add parameters. Should return void
-    deleteUser(): Promise<void>;
+    deleteUser(profile: Profile): Promise<void>;
     
     //Follow user call
-    //will need to have parameters added. Should return void. 
-    followUser(): Promise<void>;
+    followUser(follow: Follow): Promise<void>;
 
     //unfollow user call
-    // will need to have parameters added. Should return void. 
-    unfollowUser(): Promise<void>;
+    unfollowUser(id: string): Promise<void>;
 
     //get all users call
     //should return a list of users
     getAllUsers(): Promise<UserList>;
 
-    //get all followees call
+    //get all followers call
     //should return a list of users
-    getFollowees(): Promise<UserList>;
+    getFollowees(id: string): Promise<UserList>;
 
     //getUserInfo call
     //returns the the info for the user that is logged in

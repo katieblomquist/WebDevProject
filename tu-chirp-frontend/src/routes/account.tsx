@@ -5,7 +5,7 @@ export default function Account(){
 
     return(
         <>
-            {/* This will return your xml. */}
+            {/* This will return your jsx. */}
         </>
     );
 }

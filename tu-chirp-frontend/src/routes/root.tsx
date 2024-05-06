@@ -6,7 +6,7 @@ export default function Root(){
 
     return(
         <>
-            {/* This will return your xml. */}
+            {/* This will return your jsx. */}
         </>
     );    
 }
