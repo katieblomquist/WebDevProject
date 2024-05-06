@@ -1,4 +1,4 @@
-import { Post, PostList } from "./entities";
+import { Post, PostList, Like, PostComment } from "./entities";
 
 //This is an interface that will be implimented first in the mock services (which connect to mock data) and then to the http services (which connect
 // to the API). This will allow us to start dev on front oned without the API being finished and without having to duplicate work. 
@@ -6,23 +6,18 @@ import { Post, PostList } from "./entities";
 export interface PostService{
 
     //create bookiing call
-    //will need to have parameters added. Should return void
-    createPost(): Promise<void>;
+    createPost(post: Post): Promise<void>;
 
     //update post call
-    //will need to have parameters added. Should return void
-    updatePost(): Promise<void>;
+    updatePost(id: string, content: string): Promise<void>;
 
     //delete post call
-    //will need to have parameters added. Should return void
-    deletePost(): Promise<void>;
+    deletePost(id: string): Promise<void>;
 
     //favorite post call
-    //will need to have parameters added. Should return void
-    favoritePost(): Promise<void>;
+    favoritePost(like: Like): Promise<void>;
 
     //share post call
-    //will need to have parameters added. Should return void
     sharePost(): Promise<void>;
 
     //get all posts call
@@ -31,15 +26,14 @@ export interface PostService{
 
     //get post by Id call
     //should return a post
-    getPostById(): Promise<Post>;
+    getPostById(id: string): Promise<Post>;
 
     //get posts by user call
     //should return a PostList
     getPostByUser(id: String): Promise<PostList>;
 
     //create comment
-    //Will need to have parameters added. should return void
-    createComment(): Promise<void>;
+    createComment(postComment: PostComment): Promise<void>;
 
 
 
