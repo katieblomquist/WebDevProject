@@ -10,6 +10,7 @@ import Root from './routes/root.tsx';
 import Feed from './routes/feed.tsx';
 import { profile } from './services/mock_data.ts';
 import ProfilePage from './routes/profile.tsx';
+import Account from './routes/account.tsx';
 
 let user = profile;
 
@@ -34,13 +35,17 @@ const router = createBrowserRouter([{
       element: <FindUsers />
     },
     {
-      path:"login",
+      path: "login",
       element: <Login />
     },
     {
-      path:"feed",
-      element: <Feed user={user}/>
+      path: "feed",
+      element: <Feed user={user} />
+    }, {
+      path: "account",
+      element: <Account />
     }
+
   ]
 
 }])

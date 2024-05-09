@@ -6,57 +6,58 @@ import { MockPostService } from "../services/mock_post.service";
 import { MockUserService } from "../services/mock_user.service";
 import { PostService } from "../services/post.service";
 import { UserService } from "../services/user.service";
+import { Skeleton } from "@mui/material";
 
 const userService: UserService = new MockUserService;
 const postService: PostService = new MockPostService;
 
-export default function ProfilePage(props: {user: Profile}){
+export default function ProfilePage(props: { user: Profile }) {
     // implement hooks
     const [postList, setList] = useState<PostList>([]);
-    const [jsxPostList, setPosts] = useState<JSX.Element[]>([]);
     const [loading, setLoading] = useState(false);
 
     const profile = props.user;
 
     //implement functions
 
-    async function listPosts(id: string){
+    async function listPosts(){
         try {
             setLoading(true);
-            const d = await postService.getPostByUser(id);
-            setList(d);
+            await postService.getPostByUser(profile.user_id).then(d => {
+                setList(d);
+            });
             
         } catch(error){
             console.log(error);
         };
-        generatePostList();
-        console.log("generated posts"); 
-    }
-
-    function generatePostList(){
-        let generatedPostList = postList.map((post) => {
-            console.log(post);
-            if(post.user_id === profile.user_id){
-                return <PostCard post={post} poster={true} />
-            } else {
-                return <PostCard post={post} poster={false} />
-            }
-        });
-        setPosts(generatedPostList); 
-        console.log("wtf");
         setLoading(false);
     }
 
     useEffect(() => {
-        listPosts(profile.user_id);
+        listPosts();
     }, []);
 
-    return(
-        <div style={{display: 'flex', flexDirection: 'row'}}>
-            <ProfileCard location="main" user={profile} />
-            <div id ="posts">
-                {jsxPostList}
+    return (
+        <>
+        {loading ? (
+            <>
+                <Skeleton animation="wave" variant="rounded" width={300} height={300} sx={{ margin: 1 }} />
+            </>
+        ) : (
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <ProfileCard location="profile" user={profile} />
+                <div id="posts">
+                    {postList.map((value) => {
+                        if(value.user_id === profile.user_id){
+                            return <PostCard post={value} poster={true} />
+                        } else {
+                            return <PostCard post={value} poster={false} />
+                        }
+                    })}
+                </div>
             </div>
-        </div>
+        )
+        }
+        </>
     );
 }
