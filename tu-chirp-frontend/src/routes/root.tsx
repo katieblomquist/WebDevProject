@@ -1,12 +1,18 @@
-export default function Root(){
+import { Outlet, Link } from "react-router-dom";
+import React from "react";
+import NavBar from "../components/navbar";
+import { Diversity2 } from "@mui/icons-material";
 
-    // implement hooks
+export default function Root() {
+    return (
+        <div style={{width:'100%'}}>
+            <NavBar />
 
-    //implement functions
+            <div id="routes" style={{margin:'2em'}}>
+                <Outlet />
+            </div>
 
-    return(
-        <>
-            {/* This will return your jsx. */}
-        </>
-    );    
+
+        </div>
+    );
 }

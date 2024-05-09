@@ -1,11 +1,63 @@
-export default function Profile(){
+import { useState, useEffect } from "react";
+import PostCard from "../components/post";
+import ProfileCard from "../components/profile_card";
+import { PostList, Profile } from "../services/entities";
+import { MockPostService } from "../services/mock_post.service";
+import { MockUserService } from "../services/mock_user.service";
+import { PostService } from "../services/post.service";
+import { UserService } from "../services/user.service";
+import { Skeleton } from "@mui/material";
+
+const userService: UserService = new MockUserService;
+const postService: PostService = new MockPostService;
+
+export default function ProfilePage(props: { user: Profile }) {
     // implement hooks
+    const [postList, setList] = useState<PostList>([]);
+    const [loading, setLoading] = useState(false);
+
+    const profile = props.user;
 
     //implement functions
 
-    return(
+    async function listPosts(){
+        try {
+            setLoading(true);
+            await postService.getPostByUser(profile.user_id).then(d => {
+                setList(d);
+            });
+            
+        } catch(error){
+            console.log(error);
+        };
+        setLoading(false);
+    }
+
+    useEffect(() => {
+        listPosts();
+    }, []);
+
+    return (
         <>
-            {/* This will return your jsx. */}
+        {loading ? (
+            <>
+                <Skeleton animation="wave" variant="rounded" width={300} height={300} sx={{ margin: 1 }} />
+            </>
+        ) : (
+            <div style={{ display: 'flex', flexDirection: 'row' }}>
+                <ProfileCard location="profile" user={profile} />
+                <div id="posts">
+                    {postList.map((value) => {
+                        if(value.user_id === profile.user_id){
+                            return <PostCard post={value} poster={true} />
+                        } else {
+                            return <PostCard post={value} poster={false} />
+                        }
+                    })}
+                </div>
+            </div>
+        )
+        }
         </>
     );
 }

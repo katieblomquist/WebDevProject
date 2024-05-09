@@ -5,7 +5,7 @@ export default function Account(){
 
     return(
         <>
-            {/* This will return your jsx. */}
+            <h1>The Account Page</h1>
         </>
     );
 }
