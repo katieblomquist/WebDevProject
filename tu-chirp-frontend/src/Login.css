@@ -1,0 +1,90 @@
+/* Login.css */
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+
+.card {
+  width: 80%;
+  max-width: 400px;
+  position: relative;
+  margin: auto;
+  text-align: center;
+  border-radius: 5px;
+  background: white;
+  box-shadow: 0px 2px 4px -2px rgba(0,0,0,0.1);
+}
+
+.error {
+  color: red;
+}
+.logo {
+  width: 30%;
+  margin-bottom: 20px;
+}
+
+.title {
+  color: #24292e;
+  font-size: 1.5em;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+}
+
+.form-container {
+  padding: 20px;
+}
+.input-field {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 0 10px;
+  background-color: white; 
+  color: black;
+}
+
+
+.submit-button {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-size: 1em;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  background-color: #24292e;
+}
+
+.google-button {
+  width: 100%;
+  height: 40px;
+  background: #0366d6;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  font-size: 1em;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.google-icon {
+  margin-right: 10px;
+}
+
+.footer {
+  padding: 20px;
+  font-size: 0.9em;
+  color: #586069;
+}
