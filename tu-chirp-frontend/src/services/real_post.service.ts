@@ -48,7 +48,7 @@ export class RealPostService implements PostService{
        
         const {data: Post,error} = await supabase
             .from("Post")
-            .select("*")
+            .select("*, User!inner(user_id)")
         return new Promise((resolve) => {
             setTimeout(resolve, 500, Post);
         })

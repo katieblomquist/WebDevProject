@@ -28,4 +28,6 @@ export interface UserService{
     //returns the the info for the user that is logged in
     getUserInfo(id: String): Promise<User>;
 
+    getUserName(id:Number): Promise<String>; //Returns the users name when requested by userid
+
 }
