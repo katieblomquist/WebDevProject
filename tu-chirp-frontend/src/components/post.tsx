@@ -1,7 +1,10 @@
-import { Avatar, Card, IconButton, Menu, MenuItem } from "@mui/material";
+import { Avatar, Card, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import { Post } from "../services/entities";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import React from "react";
+import { Link } from "react-router-dom";
+
+//TO DO: Style the dropdown button
 
 export default function PostCard(props: { post: Post, poster: boolean }) {
 
@@ -15,8 +18,8 @@ export default function PostCard(props: { post: Post, poster: boolean }) {
         setAnchorEl(null);
     };
     const options = [
-        'Edit',
-        'Delete'
+        { title: 'Edit', link: '/edit' },
+        { title: 'Delete', link: '/delete' }
     ];
     const ITEM_HEIGHT = 48;
 
@@ -28,7 +31,7 @@ export default function PostCard(props: { post: Post, poster: boolean }) {
         if (poster === true) {
             return <div style={{ display: 'flex', flexDirection: 'row', height: '150px', padding: '20px', margin: '20px' }}>
                 <Avatar>{initial}</Avatar>
-                <div style={{ margin: '0 0 0 2em', flexGrow:'1' }}>
+                <div style={{ margin: '0 0 0 2em', flexGrow: '1' }}>
                     <h3 style={{ margin: '0' }}>{props.post.user_handle}</h3>
                     <p>{props.post.date_created}</p>
                     <p>{props.post.content}</p>
@@ -39,7 +42,7 @@ export default function PostCard(props: { post: Post, poster: boolean }) {
                     aria-controls={open ? 'long-menu' : undefined}
                     aria-expanded={open ? 'true' : undefined}
                     aria-haspopup="true"
-                    style={{textAlign:'center'}}
+                    style={{ textAlign: 'center' }}
                     onClick={handleClick}
                 >
                     <p>...</p>
@@ -60,8 +63,8 @@ export default function PostCard(props: { post: Post, poster: boolean }) {
                     }}
                 >
                     {options.map((option) => (
-                        <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
-                            {option}
+                        <MenuItem component={Link} to={option.link} key={option.title} onClick={handleClose}>
+                            <Typography textAlign="center">{option.title}</Typography>
                         </MenuItem>
                     ))}
                 </Menu>
