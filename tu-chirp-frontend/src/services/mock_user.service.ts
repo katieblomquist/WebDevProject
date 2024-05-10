@@ -3,7 +3,7 @@ import { UserService } from "./user.service";
 import { users, profile, follows } from "./mock_data";
 
 export class MockUserService implements UserService{
-    getFollowees(id: string): Promise<UserList> {
+    getFollowees(id: number): Promise<UserList> {
         let followees: UserList = [];
         follows.forEach(follow => {
             users.forEach(user => {
@@ -26,7 +26,7 @@ export class MockUserService implements UserService{
         follows.push(follow);
         return new Promise<void>((resolve) => { setTimeout(resolve, 500,) });
     }
-    unfollowUser(id: string): Promise<void> {
+    unfollowUser(id: number): Promise<void> {
         follows.forEach((follow, index) => {
             if(follow.followee_id === id){
                 follows.splice(index, 1);
@@ -39,7 +39,7 @@ export class MockUserService implements UserService{
             setTimeout(resolve, 500, [...users]);
         })
     }
-    getUserInfo(id: String): Promise<User> {
+    getUserInfo(id: number): Promise<User> {
         let foundUser: User;
         users.forEach(user => {
             if(user.user_id === id){

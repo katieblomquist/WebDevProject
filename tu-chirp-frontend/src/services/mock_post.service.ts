@@ -7,7 +7,7 @@ export class MockPostService implements PostService{
         posts.push(post);
         return new Promise<void>((resolve) => { setTimeout(resolve, 500,) });
     }
-    updatePost(id: string, content: string): Promise<void> {
+    updatePost(id: number, content: string): Promise<void> {
         posts.forEach(post => {
             if(post.content_id === id){
                 post.content = content;
@@ -15,7 +15,7 @@ export class MockPostService implements PostService{
         });
         return new Promise<void>((resolve) => { setTimeout(resolve, 500,) });
     }
-    deletePost(id: string): Promise<void> {
+    deletePost(id: number): Promise<void> {
         posts.forEach((post, index) => {
             if(post.content_id === id){
                 posts.splice(index, 1);
@@ -39,7 +39,7 @@ export class MockPostService implements PostService{
             setTimeout(resolve, 500, [...posts]);
         })
     }
-    getPostById(id: string): Promise<Post> {
+    getPostById(id: number): Promise<Post> {
         let found: Boolean = false;
         let post: Post;
         posts.forEach(post => {
@@ -56,7 +56,7 @@ export class MockPostService implements PostService{
         }
         
     }
-    getPostByUser(id: String): Promise<PostList> {
+    getPostByUser(id: number): Promise<PostList> {
         let userPosts: PostList = [];
         posts.forEach(post => {
             if(post.user_id === id){

@@ -2,7 +2,7 @@ import { UserList, User, Profile, Follow } from "./entities";
 import { UserService } from "./user.service";
 
 export class HttpUserService implements UserService{
-    getFollowees(id: string): Promise<UserList> {
+    getFollowees(id: number): Promise<UserList> {
         throw new Error("Method not implemented.");
     }
     async deleteUser(profile: Profile): Promise<void> {
@@ -11,13 +11,13 @@ export class HttpUserService implements UserService{
     async followUser(follow: Follow): Promise<void> {
         throw new Error("Method not implemented.");
     }
-    async unfollowUser(id: string): Promise<void> {
+    async unfollowUser(id: number): Promise<void> {
         throw new Error("Method not implemented.");
     }
     async getAllUsers(): Promise<UserList> {
         throw new Error("Method not implemented.");
     }
-    async getUserInfo(id: String): Promise<User> {
+    async getUserInfo(id: number): Promise<User> {
         throw new Error("Method not implemented.");
     }
     

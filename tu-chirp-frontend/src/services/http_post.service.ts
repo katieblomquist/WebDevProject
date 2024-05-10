@@ -5,10 +5,10 @@ export class HttpPostService implements PostService{
     async createPost(post: Post): Promise<void> {
         throw new Error("Method not implemented.");
     }
-    async updatePost(id: string, content: string): Promise<void> {
+    async updatePost(id: number, content: string): Promise<void> {
         throw new Error("Method not implemented.");
     }
-    async deletePost(id: string): Promise<void> {
+    async deletePost(id: number): Promise<void> {
         throw new Error("Method not implemented.");
     }
     async favoritePost(like: Like): Promise<void> {
@@ -20,10 +20,10 @@ export class HttpPostService implements PostService{
     async getAllPosts(): Promise<PostList> {
         throw new Error("Method not implemented.");
     }
-    async getPostById(id: string): Promise<Post> {
+    async getPostById(id: number): Promise<Post> {
         throw new Error("Method not implemented.");
     }
-    async getPostByUser(id: String): Promise<PostList> {
+    async getPostByUser(id: number): Promise<PostList> {
         throw new Error("Method not implemented.");
     }
     async createComment(postComment: PostComment): Promise<void> {

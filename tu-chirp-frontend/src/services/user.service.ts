@@ -14,7 +14,7 @@ export interface UserService{
     followUser(follow: Follow): Promise<void>;
 
     //unfollow user call
-    unfollowUser(id: string): Promise<void>;
+    unfollowUser(id: number): Promise<void>;
 
     //get all users call
     //should return a list of users
@@ -22,10 +22,10 @@ export interface UserService{
 
     //get all followers call
     //should return a list of users
-    getFollowees(id: string): Promise<UserList>;
+    getFollowees(id: number): Promise<UserList>;
 
     //getUserInfo call
     //returns the the info for the user that is logged in
-    getUserInfo(id: String): Promise<User>;
+    getUserInfo(id: number): Promise<User>;
 
 }
