@@ -5,10 +5,8 @@ import { MockPostService } from "../services/mock_post.service";
 import { MockUserService } from "../services/mock_user.service";
 import { PostService } from "../services/post.service";
 import { UserService } from "../services/user.service";
-import Post from "../components/post";
 import PostCard from "../components/post";
 import { Skeleton } from "@mui/material";
-import { AirlineSeatReclineExtra } from "@mui/icons-material";
 
 const userService: UserService = new MockUserService;
 const postService: PostService = new MockPostService;
