@@ -1,7 +1,5 @@
-import { Outlet, Link } from "react-router-dom";
-import React from "react";
+import { Outlet } from "react-router-dom";
 import NavBar from "../components/navbar";
-import { Diversity2 } from "@mui/icons-material";
 import { Profile } from "../services/entities";
 
 

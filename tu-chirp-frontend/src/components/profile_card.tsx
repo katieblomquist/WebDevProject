@@ -6,9 +6,6 @@ import { Profile } from '../services/entities';
 
 export default function ProfileCard(props: {location: string, user: Profile}){
 
-    // implement hooks
-
-    //implement functions
     let initial = props.user.handle.charAt(0).toUpperCase();
     function buttonType(location: string, user: Profile){
         if (location === "profile"){

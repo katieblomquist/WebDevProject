@@ -1,6 +1,5 @@
 import { Avatar, Card, Menu, MenuItem } from "@mui/material";
 import { Post } from "../services/entities";
-// import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import React from "react";
 
 export default function PostCard(props: { post: Post, poster: boolean, deletePost: (id: number) => void, handleDialog: (id: number, content: string) => void }) {

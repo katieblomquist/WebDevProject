@@ -3,7 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Profile } from "../services/entities";
 
-const pages = ['Home'];
 const settings = [{ title: 'Profile', link: "/profile" }, { title: 'Account', link: "/account" }, { title: 'Logout', link: "/" }];
 
 export default function NavBar(props: { user: Profile, isPublic: boolean }) {
