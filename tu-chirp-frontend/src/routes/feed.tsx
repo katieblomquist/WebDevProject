@@ -88,11 +88,8 @@ export default function Feed(this: any, props: { user: Profile, isPublic: boolea
                         </Card>
                         <div id="posts">
                             {postList.map((value) => {
-                                if (value.user_id === profile.user_id) {
-                                    return <PostCard post={value} poster={true} deletePost={deletePost} handleDialog={handleClickOpen} />;
-                                } else {
-                                    return <PostCard post={value} poster={false} deletePost={deletePost} handleDialog={handleClickOpen} />;
-                                }
+                                return <PostCard post={value} poster={false} deletePost={deletePost} handleDialog={handleClickOpen} />;
+                                
                             })}
                         </div>
                     </div>
@@ -136,6 +133,14 @@ export default function Feed(this: any, props: { user: Profile, isPublic: boolea
                                     handleClose();
                                 },
                             }}
+                            sx={{
+                                "& .MuiDialog-container": {
+                                  "& .MuiPaper-root": {
+                                    width: "100%",
+                                    minWidth: "500px",  // Set your width here
+                                  },
+                                },
+                              }}
                         >
                             <DialogTitle>Edit Your Post</DialogTitle>
                             <DialogContent>
@@ -155,7 +160,7 @@ export default function Feed(this: any, props: { user: Profile, isPublic: boolea
                             </DialogContent>
                             <DialogActions>
                                 <Button onClick={handleClose}>Cancel</Button>
-                                <Button onClick={handleUpdate}>Subscribe</Button>
+                                <Button onClick={handleUpdate}>Update</Button>
                             </DialogActions>
                         </Dialog>
                     </>
