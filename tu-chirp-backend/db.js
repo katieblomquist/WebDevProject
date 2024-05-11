@@ -48,7 +48,7 @@ async function favoritePost(user_id, content_id){
 }
 
 async function getPostByUser(user_id){
-  const result = await sql`SELECT * FROM post where user_id = ${user_id} AND is_deleted = false`;
+  const result = await sql `SELECT post.*, users.handle FROM post INNER JOIN users ON post.user_id = users.id where user_id = ${user_id} AND is_deleted = false`;
   return result;
 }
 

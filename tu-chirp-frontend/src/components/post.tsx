@@ -17,14 +17,14 @@ export default function PostCard(props: { post: Post, poster: boolean }) {
 
     //implement functions
 
-    let initial = props.post.user_handle.charAt(1).toUpperCase();
+    let initial = props.post.handle.charAt(0).toUpperCase();
 
     function CardContent(poster: boolean) {
         if (poster === true) {
             return <div style={{display:'flex', flexDirection:'row', height:'150px', padding: '20px', margin: '20px'}}>
                 <Avatar>{initial}</Avatar>
                 <div style={{margin:'0 0 0 2em'}}>
-                    <h3 style={{margin:'0'}}>{props.post.user_handle}</h3>
+                    <h3 style={{margin:'0'}}>{props.post.handle}</h3>
                     <p>{props.post.date_created}</p>
                     <p>{props.post.content}</p>
                 </div>
@@ -51,7 +51,7 @@ export default function PostCard(props: { post: Post, poster: boolean }) {
             return <div style={{display:'flex', flexDirection:'row', height:'150px', padding: '20px', margin: '20px'}}>
                 <Avatar>{initial}</Avatar>
                 <div style={{margin:'0 0 0 2em'}}>
-                    <h3 style={{margin:'0'}}>{props.post.user_handle}</h3>
+                    <h3 style={{margin:'0'}}>{props.post.handle}</h3>
                     <p>{props.post.date_created}</p>
                     <p>{props.post.content}</p>
                 </div>

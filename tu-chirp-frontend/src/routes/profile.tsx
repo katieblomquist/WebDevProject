@@ -2,14 +2,14 @@ import { useState, useEffect } from "react";
 import PostCard from "../components/post";
 import ProfileCard from "../components/profile_card";
 import { PostList, Profile } from "../services/entities";
-import { MockPostService } from "../services/mock_post.service";
 import { MockUserService } from "../services/mock_user.service";
 import { PostService } from "../services/post.service";
 import { UserService } from "../services/user.service";
 import { Skeleton } from "@mui/material";
+import { HttpPostService } from "../services/http_post.service";
 
 const userService: UserService = new MockUserService;
-const postService: PostService = new MockPostService;
+const postService: PostService = new HttpPostService;
 
 export default function ProfilePage(props: { user: Profile }) {
     // implement hooks

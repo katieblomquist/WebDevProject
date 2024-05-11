@@ -9,9 +9,10 @@ import Post from "../components/post";
 import PostCard from "../components/post";
 import { Skeleton } from "@mui/material";
 import { AirlineSeatReclineExtra } from "@mui/icons-material";
+import { HttpPostService } from "../services/http_post.service";
 
 const userService: UserService = new MockUserService;
-const postService: PostService = new MockPostService;
+const postService: PostService = new HttpPostService;
 
 export default function Feed(props: {user: Profile}){
     // implement hooks

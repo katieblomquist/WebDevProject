@@ -1,10 +1,10 @@
-export type User = {user_id: string, handle: string};
+export type User = {user_id: number, handle: string};
 export type UserList = User[];
-export type Profile = {user_id: string, username: string, handle: string, email: string, date_created: string, bio: string, email_notifications: boolean, is_public: boolean};
-export type Follow = {follower_id: string, followee_id: string};
+export type Profile = {user_id: number, username: string, handle: string, email: string, date_created: string, bio: string, email_notifications: boolean, is_public: boolean};
+export type Follow = {id: number, follower_id: number, followee_id: number};
 export type FollowList = Follow[];
-export type Post = {content_id: string, is_post: boolean, user_id: string, date_created: string, content: string, user_handle: string, comments: PostComment[], likes: Like[]};
+export type Post = {id: number, is_post: boolean, user_id: number, date_created: string, content: string, handle: string, modified_at: string, was_modified: boolean, comments: PostComment[], likes: Like[]};
 export type PostList = Post[];
-export type Like = {like_id: string, user_id: string, content_id: string};
-export type PostComment = {content_id: string, parent_id: string, content: string};
+export type Like = {id: number, user_id: number, content_id: number};
+export type PostComment = {id: number, parent_id: number, content: string};
 
