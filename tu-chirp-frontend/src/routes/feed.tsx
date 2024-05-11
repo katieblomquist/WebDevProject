@@ -47,7 +47,7 @@ export default function Feed(props: {user: Profile}){
             </>
         ) : (
             <div style={{ display: 'flex', flexDirection: 'row' }}>
-                <ProfileCard location="profile" user={profile} />
+                <ProfileCard location="main" user={profile} />
                 <div id="posts">
                     {postList.map((value) => {
                         if(value.user_id === profile.user_id){
