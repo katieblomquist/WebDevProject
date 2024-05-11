@@ -17,7 +17,6 @@ const sql = postgres({
   },
 });
 
-//I tested all of the sql using the sql editor in neon, havent called the functions though, they should work.
 async function getAllPosts(){
     const result = await sql `SELECT post.*, users.handle FROM post INNER JOIN users ON post.user_id = users.id WHERE post.is_deleted = false`;
     return result;
@@ -28,9 +27,8 @@ async function getPostById(id){
   return result;
 }
 
-async function createPost({user_id, content}){ 
-  const result = await sql`INSERT INTO post (is_post, user_id, date_created, content, was_modified, is_deleted) VALUES (true ${user_id}
-      CURRENT_DATE ${content} false false)`
+async function createPost(user_id, content){ 
+  const result = await sql`INSERT INTO post (is_post, user_id, date_created, content, was_modified, is_deleted) VALUES (true, ${user_id}, CURRENT_DATE, ${content}, false, false)`
     return result;
 } 
 
@@ -40,28 +38,27 @@ async function updatePost(id, content){
 }
 
 async function deletePost(id){
-  const result = await sql`UPDATE post SET is_deleted = true, was_modified = trure, modified_at = CURRENT_DATE WHERE id = ${id}`;
+  const result = await sql`UPDATE post SET is_deleted = true, was_modified = true, modified_at = CURRENT_DATE WHERE id = ${id}`;
   return result;
 }
 
-async function favoritePost(id,cid){
-  const result = await sql `INSERT INTO likes (user_id, content_id) VALUES (${id}, ${cid})`;
+async function favoritePost(user_id, content_id){
+  const result = await sql `INSERT INTO likes (user_id, content_id) VALUES (${user_id}, ${content_id})`;
   return result;
 }
 
-async function getPostByUser(id){
-  const result = await sql`SELECT * FROM post where user_id = ${id} AND is_deleted = false`;
+async function getPostByUser(user_id){
+  const result = await sql`SELECT * FROM post where user_id = ${user_id} AND is_deleted = false`;
   return result;
 }
 
-async function createComment({parent_id, user_id, content}){ 
-  const result = await sql`INSERT INTO post (parent_id, is_post, user_id, date_created, content, was_modified, is_deleted) VALUES (${parent_id} false ${user_id}
-      CURRENT_DATE ${content} false false)`;
+async function createComment(parent_id, user_id, content){ 
+  const result = await sql`INSERT INTO post (parent_id, is_post, user_id, date_created, content, was_modified, is_deleted) VALUES (${parent_id}, false, ${user_id}, CURRENT_DATE, ${content}, false, false)`;
     return result;
 } 
 
 async function getUserInfo(id){
-  const result = await sql`Select * from user where id = ${id}`
+  const result = await sql`Select * from users where id = ${id}`
   return result;
 }
 module.exports= {getAllPosts, getPostById, createPost, updatePost, deletePost, favoritePost, getPostByUser, createComment, getUserInfo};
