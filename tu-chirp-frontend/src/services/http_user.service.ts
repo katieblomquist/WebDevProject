@@ -18,7 +18,18 @@ export class HttpUserService implements UserService{
         throw new Error("Method not implemented.");
     }
     async getUserInfo(id: String): Promise<User> {
-        throw new Error("Method not implemented.");
+        const url = new URL('localhost:3000/userinfo');
+        url.searchParams.set('id', JSON.stringify(id));
+        const response = await fetch(url, {
+            method: "GET",
+        });
+        if (response.ok) {
+            const jsonData = await response.json();
+            return jsonData;
+        } else {
+            console.log("getting user info by id failed");
+            return Promise.reject();
+        }
     }
     
 }

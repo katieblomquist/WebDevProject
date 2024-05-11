@@ -6,16 +6,16 @@ import { Post, PostList, Like, PostComment } from "./entities";
 export interface PostService{
 
     //create bookiing call
-    createPost(post: Post): Promise<void>;
+    createPost(user_id: number, content: string): Promise<void>;
 
     //update post call
-    updatePost(id: string, content: string): Promise<void>;
+    updatePost(id: number, content: string): Promise<void>;
 
     //delete post call
-    deletePost(id: string): Promise<void>;
+    deletePost(id: number): Promise<void>;
 
     //favorite post call
-    favoritePost(like: Like): Promise<void>;
+    favoritePost(user_id: number, content_id: number): Promise<void>;
 
     //share post call
     sharePost(): Promise<void>;
@@ -26,14 +26,14 @@ export interface PostService{
 
     //get post by Id call
     //should return a post
-    getPostById(id: string): Promise<Post>;
+    getPostById(id: number): Promise<Post>;
 
     //get posts by user call
     //should return a PostList
-    getPostByUser(id: String): Promise<PostList>;
+    getPostByUser(id: number): Promise<PostList>;
 
     //create comment
-    createComment(postComment: PostComment): Promise<void>;
+    createComment(parent_id: number, user_id: number, content: string): Promise<void>;
 
 
 

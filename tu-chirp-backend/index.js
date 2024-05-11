@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const { getAllPosts, getAllPostsHandles, getPostById, updatePost, deletePost, favoritePost, getPostByUser, createComment, getUserInfo, createPost } = require('./db');
 const app = express();
-app.use(cors());
+app.use(cors({ origin: '*' }));
 const port = process.env.PORT || 3000
 
 try {
