@@ -48,7 +48,7 @@ export default function ProfilePage(props: { user: Profile }) {
                 <ProfileCard location="profile" user={profile} />
                 <div id="posts">
                     {postList.map((value) => {
-                        if(value.user_id === profile.user_id){
+                        if(value.user_id == profile.user_id){
                             return <PostCard post={value} poster={true} />
                         } else {
                             return <PostCard post={value} poster={false} />
