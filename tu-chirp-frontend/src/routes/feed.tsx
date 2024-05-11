@@ -37,6 +37,12 @@ export default function Feed(props: { user: Profile, isPublic: boolean }) {
         setLoading(false);
     }
 
+    async function deletePost(id: number){
+        console.log(id);
+        await postService.deletePost(id);
+        listPosts();
+    }
+
     useEffect(() => {
         listPosts();
     }, []);
@@ -60,9 +66,9 @@ export default function Feed(props: { user: Profile, isPublic: boolean }) {
                         <div id="posts">
                             {postList.map((value) => {
                                 if (value.user_id === profile.user_id) {
-                                    return <PostCard post={value} poster={true} />
+                                    return <PostCard post={value} poster={true} deletePost={deletePost}/>
                                 } else {
-                                    return <PostCard post={value} poster={false} />
+                                    return <PostCard post={value} poster={false} deletePost={deletePost}/>
                                 }
                             })}
                         </div>
@@ -83,10 +89,10 @@ export default function Feed(props: { user: Profile, isPublic: boolean }) {
                     <ProfileCard location="main" user={profile} />
                     <div id="posts">
                         {postList.map((value) => {
-                            if (value.user_id === profile.user_id) {
-                                return <PostCard post={value} poster={true} />
+                            if (value.user_id == profile.user_id) {
+                                return <PostCard post={value} poster={true} deletePost={deletePost}/>
                             } else {
-                                return <PostCard post={value} poster={false} />
+                                return <PostCard post={value} poster={false} deletePost={deletePost}/>
                             }
                         })}
                     </div>

@@ -3,7 +3,7 @@ import { Post } from "../services/entities";
 // import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import React from "react";
 
-export default function PostCard(props: { post: Post, poster: boolean }) {
+export default function PostCard(props: { post: Post, poster: boolean, deletePost: (id: number) => void }) {
 
     // implement hooks
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -12,6 +12,7 @@ export default function PostCard(props: { post: Post, poster: boolean }) {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
+        props.deletePost(props.post.id);
         setAnchorEl(null);
     };
 

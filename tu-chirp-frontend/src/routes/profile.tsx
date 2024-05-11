@@ -12,13 +12,11 @@ const userService: UserService = new MockUserService;
 const postService: PostService = new HttpPostService;
 
 export default function ProfilePage(props: { user: Profile }) {
-    // implement hooks
+
     const [postList, setList] = useState<PostList>([]);
     const [loading, setLoading] = useState(false);
 
     const profile = props.user;
-
-    //implement functions
 
     async function listPosts(){
         try {
@@ -31,6 +29,11 @@ export default function ProfilePage(props: { user: Profile }) {
             console.log(error);
         };
         setLoading(false);
+    }
+
+    async function deletePost(id: number){
+        await postService.deletePost(id);
+        listPosts();
     }
 
     useEffect(() => {
@@ -49,9 +52,9 @@ export default function ProfilePage(props: { user: Profile }) {
                 <div id="posts">
                     {postList.map((value) => {
                         if(value.user_id == profile.user_id){
-                            return <PostCard post={value} poster={true} />
+                            return <PostCard post={value} poster={true} deletePost={deletePost}/>
                         } else {
-                            return <PostCard post={value} poster={false} />
+                            return <PostCard post={value} poster={false} deletePost={deletePost}/>
                         }
                     })}
                 </div>

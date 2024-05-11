@@ -18,12 +18,13 @@ const sql = postgres({
 });
 
 async function getAllPosts(){
-    const result = await sql `SELECT post.*, users.handle FROM post INNER JOIN users ON post.user_id = users.id WHERE post.is_deleted = false`;
+    const result = await sql `SELECT post.*, users.handle FROM post INNER JOIN users ON post.user_id = users.id WHERE post.is_deleted = false AND post.is_post = true`;
     return result;
 }
 
 async function getPostById(id){
-  const result = await sql`SELECT * FROM post WHERE id = ${id} AND is_deleted = false`;
+  const result = await sql`SELECT post.*, users.handle FROM post INNER JOIN users ON post.user_id = users.id WHERE post.is_deleted = false AND post.is_post = true AND post.id = ${id}`;
+
   return result;
 }
 

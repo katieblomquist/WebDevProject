@@ -38,7 +38,7 @@ export class HttpPostService implements PostService{
         }
     }
     async deletePost(id: number): Promise<void> {
-        const url = new URL('http://localhost:3000/updatepost');
+        const url = new URL('http://localhost:3000/deletepost');
         url.searchParams.set('id', JSON.stringify(id));
         const response = await fetch(url, {
             method: "PATCH",
