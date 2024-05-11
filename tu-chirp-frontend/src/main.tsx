@@ -16,7 +16,7 @@ let user = profile;
 
 const router = createBrowserRouter([{
   path: "/",
-  element: <Root />,
+  element: <Root user={user} />,
   children: [
     {
       path: "profile",

@@ -9,7 +9,7 @@ export default function ProfileCard(props: {location: string, user: Profile}){
     // implement hooks
 
     //implement functions
-    let initial = props.user.handle.charAt(1).toUpperCase();
+    let initial = props.user.handle.charAt(0).toUpperCase();
     function buttonType(location: string, user: Profile){
         if (location === "profile"){
             return <Button 
