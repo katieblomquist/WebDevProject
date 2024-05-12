@@ -3,7 +3,7 @@ import { PostService } from "./post.service";
 
 export class HttpPostService implements PostService{
     async createPost(user_id: number, content: string): Promise<void> {
-        const url = new URL('http://localhost:3000/newpost');
+        const url = new URL('https://tuspring2024webdev-88cb37ed8b7d.herokuapp.com/newpost');
         url.searchParams.set('user_id', JSON.stringify(user_id));   
         url.searchParams.set('content', content); 
         const response = await fetch(url, {
@@ -21,7 +21,7 @@ export class HttpPostService implements PostService{
 
     }
     async updatePost(id: number, content: string): Promise<void> {
-        const url = new URL('http://localhost:3000/updatepost');
+        const url = new URL('https://tuspring2024webdev-88cb37ed8b7d.herokuapp.com/updatepost');
         url.searchParams.set('post_id', JSON.stringify(id));
         url.searchParams.set('content', content);
         const response = await fetch(url, {
@@ -38,7 +38,7 @@ export class HttpPostService implements PostService{
         }
     }
     async deletePost(id: number): Promise<void> {
-        const url = new URL('http://localhost:3000/deletepost');
+        const url = new URL('https://tuspring2024webdev-88cb37ed8b7d.herokuapp.com/deletepost');
         url.searchParams.set('id', JSON.stringify(id));
         const response = await fetch(url, {
             method: "PATCH",
@@ -54,7 +54,7 @@ export class HttpPostService implements PostService{
         }
     }
     async favoritePost(user_id: number, content_id: number): Promise<void> {
-        const url = new URL('http://localhost:3000/favorite');
+        const url = new URL('https://tuspring2024webdev-88cb37ed8b7d.herokuapp.com/favorite');
         url.searchParams.set('user_id', JSON.stringify(user_id));
         url.searchParams.set('content_id', JSON.stringify(content_id));
         const response = await fetch(url, {
@@ -74,7 +74,7 @@ export class HttpPostService implements PostService{
         throw new Error("Method not implemented.");
     }
     async getAllPosts(): Promise<PostList> {
-        const url = new URL('http://localhost:3000/allposts');
+        const url = new URL('https://tuspring2024webdev-88cb37ed8b7d.herokuapp.com/allposts');
         const response = await fetch(url);
         if(response.ok){
             const jsonData = await response.json();
@@ -85,7 +85,7 @@ export class HttpPostService implements PostService{
         }
     }
     async getPostById(id: number): Promise<Post> {
-        const url = new URL('http://localhost:3000/postbyid');
+        const url = new URL('https://tuspring2024webdev-88cb37ed8b7d.herokuapp.com/postbyid');
         url.searchParams.set('id', JSON.stringify(id));
         const response = await fetch(url, {
             method: "GET",
@@ -99,7 +99,7 @@ export class HttpPostService implements PostService{
         }
     }
     async getPostByUser(id: number): Promise<PostList> {
-        const url = new URL('http://localhost:3000/postbyuser');
+        const url = new URL('https://tuspring2024webdev-88cb37ed8b7d.herokuapp.com/postbyuser');
         url.searchParams.set('user_id', JSON.stringify(id));
         const response = await fetch(url, {
             method: "GET",
@@ -113,7 +113,7 @@ export class HttpPostService implements PostService{
         }
     }
     async createComment(parent_id: number, user_id: number, content: string): Promise<void> {
-        const url = new URL('http://localhost:3000/newcomment');
+        const url = new URL('https://tuspring2024webdev-88cb37ed8b7d.herokuapp.com/newcomment');
         url.searchParams.set('user_id', JSON.stringify(user_id));
         url.searchParams.set('parent_id', JSON.stringify(parent_id));
         url.searchParams.set('content', content);
