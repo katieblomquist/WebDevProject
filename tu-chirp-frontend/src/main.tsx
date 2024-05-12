@@ -13,11 +13,16 @@ import ProfilePage from './routes/profile.tsx';
 import Account from './routes/account.tsx';
 
 let user = profile;
+let isPublic = false;
 
 const router = createBrowserRouter([{
   path: "/",
-  element: <Root />,
+  element: <Root user={user} isPublic = {isPublic} />,
   children: [
+    {
+      path:"",
+      element: <Feed user={user} isPublic = {isPublic} />
+    },
     {
       path: "profile",
       element: <ProfilePage user={user} />
@@ -38,10 +43,7 @@ const router = createBrowserRouter([{
       path: "login",
       element: <Login />
     },
-    {
-      path: "feed",
-      element: <Feed user={user} />
-    }, {
+   {
       path: "account",
       element: <Account />
     }

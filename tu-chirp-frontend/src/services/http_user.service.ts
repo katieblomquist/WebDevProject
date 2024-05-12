@@ -18,7 +18,18 @@ export class HttpUserService implements UserService{
         throw new Error("Method not implemented.");
     }
     async getUserInfo(id: String): Promise<User> {
-        throw new Error("Method not implemented.");
+        const url = new URL('https://tuspring2024webdev-88cb37ed8b7d.herokuapp.com/userinfo');
+        url.searchParams.set('id', JSON.stringify(id));
+        const response = await fetch(url, {
+            method: "GET",
+        });
+        if (response.ok) {
+            const jsonData = await response.json();
+            return jsonData;
+        } else {
+            console.log("getting user info by id failed");
+            return Promise.reject();
+        }
     }
     
 }
