@@ -1,4 +1,4 @@
-import { Follow, Profile, User, UserList } from "./entities";
+import { User } from "./entities";
 
 //This is an interface that will be implimented first in the mock services (which connect to mock data) and then to the http services (which connect
 // to the API). This will allow us to start dev on front oned without the API being finished and without having to duplicate work. 

@@ -1,4 +1,4 @@
-import { UserList, User, Profile, Follow } from "./entities";
+import { User } from "./entities";
 import { UserService } from "./user.service";
 
 export class HttpUserService implements UserService{

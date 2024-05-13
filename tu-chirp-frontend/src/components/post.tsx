@@ -33,7 +33,7 @@ export default function PostCard(props: { post: Post, poster: boolean, deletePos
         if (poster === true) {
             return <div style={{ display: 'flex', flexDirection: 'row', height: '150px', minWidth: '500px', padding: '20px', margin: '20px' }}>
                 <Avatar>{initial}</Avatar>
-                <div style={{ margin: '0 0 0 2em', flexGrow: '1' }}>
+                <div style={{ margin: '0 0 0 2em', flexGrow: '1', textAlign:'left' }}>
                     <h3 style={{ margin: '0' }}>{props.post.handle}</h3>
                     <p>{props.post.date_created}</p>
                     <p>{props.post.content}</p>
