@@ -1,4 +1,4 @@
-import { PostList, Post, Like, PostComment } from "./entities";
+import { PostList, Post } from "./entities";
 import { PostService } from "./post.service";
 
 export class HttpPostService implements PostService{

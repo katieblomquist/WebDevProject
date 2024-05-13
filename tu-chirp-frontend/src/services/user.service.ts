@@ -7,22 +7,22 @@ import { Follow, Profile, User, UserList } from "./entities";
 
 export interface UserService{
 
-    //Delete user account call
-    deleteUser(profile: Profile): Promise<void>;
+    // //Delete user account call
+    // deleteUser(profile: Profile): Promise<void>;
     
-    //Follow user call
-    followUser(follow: Follow): Promise<void>;
+    // //Follow user call
+    // followUser(follow: Follow): Promise<void>;
 
-    //unfollow user call
-    unfollowUser(id: string): Promise<void>;
+    // //unfollow user call
+    // unfollowUser(id: string): Promise<void>;
 
-    //get all users call
-    //should return a list of users
-    getAllUsers(): Promise<UserList>;
+    // //get all users call
+    // //should return a list of users
+    // getAllUsers(): Promise<UserList>;
 
-    //get all followers call
-    //should return a list of users
-    getFollowees(id: string): Promise<UserList>;
+    // //get all followers call
+    // //should return a list of users
+    // getFollowees(id: string): Promise<UserList>;
 
     //getUserInfo call
     //returns the the info for the user that is logged in

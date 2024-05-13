@@ -1,4 +1,4 @@
-import React from 'react';
+
 import '/src/index.css';  //this is the only css file that have styling on it, the app.css file doesn't have any thing
 
 function AccountPage() {

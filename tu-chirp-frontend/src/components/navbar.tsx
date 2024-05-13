@@ -6,20 +6,13 @@ import { Profile } from "../services/entities";
 const settings = [{ title: 'Profile', link: "/profile" }, { title: 'Account', link: "/account" }, { title: 'Logout', link: "/" }];
 
 export default function NavBar(props: { user: Profile, isPublic: boolean }) {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
   let initial = props.user.handle.charAt(0).toUpperCase();
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
+
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
   };
 
   const handleCloseUserMenu = () => {

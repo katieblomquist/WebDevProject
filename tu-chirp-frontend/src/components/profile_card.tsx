@@ -1,14 +1,14 @@
 import { Avatar, Button } from '@mui/material';
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import { Profile } from '../services/entities';
 
 export default function ProfileCard(props: {location: string, user: Profile}){
 
     let initial = props.user.handle.charAt(0).toUpperCase();
-    function buttonType(location: string, user: Profile){
+    function buttonType(location: string){
         if (location === "profile"){
+            
             return <Button 
             variant="outlined" 
             color="error"
@@ -31,7 +31,7 @@ export default function ProfileCard(props: {location: string, user: Profile}){
                 <p>{props.user.handle}</p>
                 <p>{props.user.email}</p>
                 <div>
-                    {buttonType(props.location, props.user)}
+                    {buttonType(props.location)}
                 </div>
             </Card>
 
