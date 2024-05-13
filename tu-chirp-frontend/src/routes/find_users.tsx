@@ -1,42 +1,34 @@
-import React, { useState } from 'react';
-import { FaPlus } from 'react-icons/fa';
+import UserCard from '../components/user_card';
+import { Profile } from "../services/entities";
 
 export default function FindUsers() {
-    const [searchQuery, setSearchQuery] = useState('');
-    const [users, setUsers] = useState([]);
+    const users: Profile[] = [
+        {
+            user_id: 1,
+            handle: 'user1',
+            username: 'User 1',
+            email: 'test@test.com',
+            date_created: '2024-05-13',
+            bio: 'this is my bio...',
+            email_notifications: true,
+            is_public: true
+        },
+    ];
 
-    // Search change
-    const handleSearchInputChange = (e) => {
-        setSearchQuery(e.target.value);
-
+    const handleAddUser = (userId: number) => {
+        console.log(`User added with ID: ${userId}`);
     };
 
     return (
-        <>
+        <div>
             <div className="search-bar">
-                <input
-                    type="text"
-                    value={searchQuery}
-                    onChange={handleSearchInputChange}
-                    placeholder="Search users..."
-                />
+                <input type="text" placeholder="Search users..." />
             </div>
             <div className="user-grid">
-                {/* Mapping through users to render user boxes */}
                 {users.map((user) => (
-                    <div key={user.id} className="user-box">
-                        <div className="profile-icon">
-                            {/* Render profile icon here */}
-                        </div>
-                        <div className="user-details">
-                            <span className="username">{user.username}</span>
-                            <button className="add-user-btn">
-                                <FaPlus /> {/* Plus icon */}
-                            </button>
-                        </div>
-                    </div>
+                    <UserCard key={user.user_id} user={user} onAddUser={handleAddUser} />
                 ))}
             </div>
-        </>
+        </div>
     );
 }
